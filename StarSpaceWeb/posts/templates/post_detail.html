@@ -1,0 +1,15 @@
+{% extends 'post_base.html' %}
+
+{% block post_content %}
+    <h2>{{ post.title }}</h2>
+    <a href="{% url 'posts:for_user' username=post.user.username %}"> <strong>@{{post.user.username}}</strong> </a>
+    <br> <p>{{post.message}}</p>
+
+    <a href="{% url 'posts:create_comment' %}">add comment </a>
+    <h5>Comments: {{ post.comments.count }}</h5>
+    {% for c in post.comments.all %}
+        <a href="{% url 'posts:for_user' username=c.user.username %}"> <strong>@{{c.user.username}}</strong> </a>
+        <p>{{c.message}}</p>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,4 @@
+<br>
+<a href="{% url 'posts:for_user' username=post.user.username %}"> <strong>@{{post.user.username}}</strong> </a> {{post.title}}
+<a href="{% url 'posts:single' username=post.user.username pk=post.pk %}">open</a>
+<br>

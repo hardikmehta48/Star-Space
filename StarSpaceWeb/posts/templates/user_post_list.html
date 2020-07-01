@@ -1,0 +1,18 @@
+{% extends 'post_base.html' %}
+
+{% block pre_post %}
+    <h2>@{{post_user.username}}</h2>
+{% endblock %}
+
+{% block post_content %}
+    {% if not post_list %}
+        <p>No post yet</p>
+    {% else %}
+        {% for p in post_list %}
+            <br>
+            <a href="{% url 'posts:for_user' username=p.user.username %}"> <strong>@{{p.user.username}}</strong> </a> {{p.title}}
+            <a href="{% url 'posts:single' username=p.user.username pk=p.pk %}">open</a>
+            <br>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
